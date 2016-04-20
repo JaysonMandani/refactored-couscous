@@ -10,4 +10,10 @@ Rails.application.routes.draw do
   post '/sessions', to: 'sessions#create'
 
   get '/sign_up', to: 'users#new', as: 'sign_up'
+
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: [:index, :create, :show, :update, :destroy]
+    end
+  end
 end

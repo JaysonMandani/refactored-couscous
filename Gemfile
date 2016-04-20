@@ -55,3 +55,4 @@ end
 gem 'awesome_print'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bcrypt', '~> 3.1.7'
+gem 'active_model_serializers'
