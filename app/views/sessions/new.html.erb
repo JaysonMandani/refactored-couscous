@@ -1,0 +1,19 @@
+<div style='margin:20px; font-size: .75em;'>
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, class: name %>
+  <% end %>
+</div>
+
+<%= form_for :user, url: '/sessions', method: 'post' do |f| %>
+  <div>email:
+  <%= f.text_field :email %>
+  </div>
+  <div>password:
+    <%= f.password_field :password %>
+  </div>
+  <div>
+    <%= f.submit 'Login' %>
+  </div>
+<% end %>
+
+<%= link_to 'Sign up', sign_up_path %>
