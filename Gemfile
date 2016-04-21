@@ -52,6 +52,7 @@ group :development do
   gem 'spring'
 end
 
+gem 'pundit'
 gem 'awesome_print'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bcrypt', '~> 3.1.7'
