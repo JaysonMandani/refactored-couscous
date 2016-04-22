@@ -2,8 +2,6 @@ class Api::V1::UsersController < Api::V1::BaseController
   before_filter :authenticate_user!, only: [:show, :update, :destroy]
 
   def index
-    users = User.all
-
     users = User.all.order(created_at: :asc)
     users = policy_scope(users)
 
@@ -17,7 +15,7 @@ class Api::V1::UsersController < Api::V1::BaseController
   end
 
   def create
-    user = User.new(create_params)
+    user = User.new(user_params)
     return api_error(status: 422, errors: user.errors) unless user.valid?
 
     user.save!
@@ -40,7 +38,7 @@ class Api::V1::UsersController < Api::V1::BaseController
     user = User.find(params[:id])
     authorize user
 
-    if !user.update_attributes(update_params)
+    if !user.update_attributes(user_params)
       return api_error(status: 422, errors: user.errors)
     end
 

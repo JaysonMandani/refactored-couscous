@@ -1,10 +1,15 @@
-<h2 class="text-center">User Posts</h2>
-
-<% @posts.each do |post| %>
-  <div class="row post-buffer">
-    <div class="col-md-6 col-md-offset-3 post">
-      <h3><%= link_to post.title, post_path(post) %></h3>
-      <p><%= post.body %></p>
-    </div>
-  </div>
+<% unless current_user.guest? %>
+  <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
+    Add Post
+  </button>
 <% end %>
+
+<h2 class="text-center">User Posts</h2>
+<div id="posts">
+  <%= render @posts %>
+</div>
+
+<%= paginate @posts %>
+
+<%= render 'modal' %>
+<%= render 'loader' %>

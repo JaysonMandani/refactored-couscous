@@ -35,13 +35,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'rspec-rails'
+  gem 'spring'
 end
 
 group :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'shoulda-callback-matchers', '~> 1.1.1'
+  gem 'database_cleaner'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -57,3 +59,6 @@ gem 'awesome_print'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bcrypt', '~> 3.1.7'
 gem 'active_model_serializers'
+gem 'faker'
+gem 'rspec-api_helpers', github: 'kollegorna/rspec-api_helpers'
+gem 'kaminari'

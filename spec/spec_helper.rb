@@ -92,5 +92,4 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
   config.include FactoryGirl::Syntax::Methods
-  config.include Requests::JsonHelpers, type: :request
 end

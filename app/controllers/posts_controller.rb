@@ -1,6 +1,13 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @post = Post.new
+    @posts = Post.order('created_at DESC').page(params[:page]).per(4)
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @products }
+      format.js
+    end
   end
 
   def new
@@ -13,10 +20,10 @@ class PostsController < ApplicationController
 
   def create
     post = Post.new(post_params)
-    if @post.save!
+    if post.save
       flash[:success] = "Post Created!"
       redirect_to posts_path
-    else 
+    else
       flash[:error] = "An error ocurred!"
       render :new
     end
@@ -49,6 +56,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:body, :title, comments_attributes: [:id, :body, :user_id])
+    params.require(:post).permit(:body, :title, :user_id, comments_attributes: [:id, :body, :user_id])
   end
 end
